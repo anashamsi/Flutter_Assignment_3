@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment_3/Forget_Password_Screen.dart';
+import 'package:flutter_assignment_3/Reels_Screen.dart';
 import 'package:flutter_assignment_3/Signup_Screen.dart';
+
+var UsernameController = TextEditingController();
+var PasswordController = TextEditingController();
+
+List list_username = ['anas'];
+List list_password = ['1234'];
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -37,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
+                  controller: UsernameController,
                   decoration: InputDecoration(
                     hintText: 'Username',
                     border: OutlineInputBorder(),
@@ -53,6 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
+                  controller: PasswordController,
                   obscureText: hidepassword,
                   decoration: InputDecoration(
                     hintText: 'Password',
@@ -80,7 +90,21 @@ class _LoginScreenState extends State<LoginScreen> {
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    var username = UsernameController.text.toString();
+                    var password = PasswordController.text.toString();
+                    if (list_username.contains(username) &&
+                        list_password.contains(password)) {
+                      UsernameController.clear();
+                      PasswordController.clear();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ReelsScreen()),
+                      );
+                    }
+
+                    print(username + ' ' + password);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orangeAccent,
                     shape: RoundedRectangleBorder(
@@ -99,7 +123,14 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(height: 20),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ForgetPasswordScreen(),
+                  ),
+                );
+              },
               child: Text('Forget password?', style: TextStyle(fontSize: 13)),
             ),
             SizedBox(height: 7),

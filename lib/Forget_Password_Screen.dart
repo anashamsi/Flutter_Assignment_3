@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
+class ForgetPasswordScreen extends StatelessWidget {
+  const ForgetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Text(
-          'Signup Screen',
+          'Forget Password Screen',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
         ),
       ),
