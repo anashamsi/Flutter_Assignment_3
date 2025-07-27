@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:chewie/chewie.dart';
 import 'package:video_player/video_player.dart';
 
-List clips = const ['assets/videos/reels2.mp4', 'assets/videos/fbreels.mp4'];
+List reels = const [
+  'assets/videos/reels3.mp4',
+  'assets/videos/reels2.mp4',
+  'assets/videos/fbreels.mp4',
+];
 
 class ReelsScreen extends StatelessWidget {
   const ReelsScreen({super.key});
@@ -11,10 +15,10 @@ class ReelsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView.builder(
-        itemCount: clips.length,
+        itemCount: reels.length,
         scrollDirection: Axis.vertical,
         itemBuilder: (c, i) {
-          return SingleReel(v: clips[i]);
+          return SingleReel(v: reels[i]);
         },
       ),
     );
@@ -87,7 +91,7 @@ class _SingleReelState extends State<SingleReel> {
         Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(9),
+              padding: const EdgeInsets.only(top: 25, left: 10, right: 10),
               child: Row(
                 children: [
                   const Text(
@@ -118,7 +122,7 @@ class _SingleReelState extends State<SingleReel> {
         ),
         Positioned(
           right: 5,
-          bottom: 30,
+          bottom: 50,
           child: Column(
             children: [
               IconButton(
@@ -144,16 +148,14 @@ class _SingleReelState extends State<SingleReel> {
           ),
         ),
         Positioned(
-          bottom: 35,
+          bottom: 70,
           left: 18,
           child: Row(
             children: [
               InkWell(
                 onTap: () {},
                 child: const CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjpBAQ1s3Bd4S3ljRtxjGv1PTN3Js0FYAaaA&s',
-                  ),
+                  backgroundImage: AssetImage('assets/images/logo.jpg'),
                 ),
               ),
               const SizedBox(width: 8),

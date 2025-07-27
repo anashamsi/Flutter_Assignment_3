@@ -31,122 +31,128 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Colors.orangeAccent,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Welcome',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            Text('Login to continue'),
-            SizedBox(height: 25),
-            SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextField(
-                  controller: UsernameController,
-                  decoration: InputDecoration(
-                    hintText: 'Username',
-                    border: OutlineInputBorder(),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.orangeAccent),
-                    ),
-                  ),
-                ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Welcome',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextField(
-                  controller: PasswordController,
-                  obscureText: hidepassword,
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    border: OutlineInputBorder(),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.orangeAccent),
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          hidepassword = !hidepassword;
-                        });
-                      },
-                      icon: Icon(
-                        hidepassword ? Icons.visibility_off : Icons.visibility,
+              Text('Login to continue'),
+              SizedBox(height: 25),
+              SizedBox(
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: TextField(
+                    controller: UsernameController,
+                    decoration: InputDecoration(
+                      hintText: 'Username',
+                      border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.orangeAccent),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 15),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: SizedBox(
+              SizedBox(height: 10),
+              SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    var username = UsernameController.text.toString();
-                    var password = PasswordController.text.toString();
-                    if (list_username.contains(username) &&
-                        list_password.contains(password)) {
-                      UsernameController.clear();
-                      PasswordController.clear();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ReelsScreen()),
-                      );
-                    }
-
-                    print(username + ' ' + password);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orangeAccent,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Login',
-                      style: TextStyle(color: Colors.black, fontSize: 18),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: TextField(
+                    controller: PasswordController,
+                    obscureText: hidepassword,
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.orangeAccent),
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            hidepassword = !hidepassword;
+                          });
+                        },
+                        icon: Icon(
+                          hidepassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-            InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ForgetPasswordScreen(),
+              SizedBox(height: 15),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      var username = UsernameController.text.toString();
+                      var password = PasswordController.text.toString();
+                      if (list_username.contains(username) &&
+                          list_password.contains(password)) {
+                        UsernameController.clear();
+                        PasswordController.clear();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ReelsScreen(),
+                          ),
+                        );
+                      }
+
+                      print('$username $password');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orangeAccent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(7),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Login',
+                        style: TextStyle(color: Colors.black, fontSize: 18),
+                      ),
+                    ),
                   ),
-                );
-              },
-              child: Text('Forget password?', style: TextStyle(fontSize: 13)),
-            ),
-            SizedBox(height: 7),
-            InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignupScreen()),
-                );
-              },
-              child: Text(
-                "Don't have an account? Sign Up",
-                style: TextStyle(fontSize: 13),
+                ),
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ForgetPasswordScreen(),
+                    ),
+                  );
+                },
+                child: Text('Forget password?', style: TextStyle(fontSize: 13)),
+              ),
+              SizedBox(height: 7),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignupScreen()),
+                  );
+                },
+                child: Text(
+                  "Don't have an account? Sign Up",
+                  style: TextStyle(fontSize: 13),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

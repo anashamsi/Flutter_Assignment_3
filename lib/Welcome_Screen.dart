@@ -27,8 +27,8 @@ class WelcomeScreen extends StatelessWidget {
                     backgroundColor: Colors.white,
 
                     child: ClipOval(
-                      child: Image.network(
-                        'https://static.vecteezy.com/system/resources/thumbnails/008/826/851/small_2x/abstract-initial-letter-mz-logo-in-black-color-isolated-in-white-background-applied-for-clothing-brand-logo-also-suitable-for-the-brands-or-companies-that-have-an-initial-name-zm-vector.jpg',
+                      child: Image.asset(
+                        'assets/images/logo.jpg',
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -55,7 +55,7 @@ class WelcomeScreen extends StatelessWidget {
             child: Align(
               alignment: Alignment.bottomRight,
               child: Padding(
-                padding: const EdgeInsets.only(right: 20, bottom: 30),
+                padding: const EdgeInsets.only(right: 20, bottom: 70),
                 child: ElevatedButton.icon(
                   onPressed: () {
                     Navigator.push(
